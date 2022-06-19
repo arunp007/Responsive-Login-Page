@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -6,44 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <style>
-        /* background image property */
-        body{
-            background-image: url("https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        /* form transparent layer property */
-        form{
-            margin-top: 100px;
-            margin-left: 50px;
-            margin-right: 50px;
-            margin-bottom: 100px;
-            border: 2px solid white;
-            border-radius: 4px;
-            width: 70%;
-            padding: 50px 50px 50px 50px;
-
-        }
-
-        /* head property */
-        h1{
-            color: white;
-            font-size: 70px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            text-align: center;
-        }
-
-        /* button property */
-
-        .btn-primary{
-            border: 2px solid white !important;
-        }
-
- 
-    </style>
-   </head>
+    <link rel="stylesheet" href="{% static 'css/login_styling.css' %}">
+    <script src="{% static 'javascript/login_valid_js.js' %}"></script>
+</head>
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -52,97 +18,24 @@
                     <div class="form-group">
                         <h1>LOGIN</h1><br><br>
                             <label for="InputEmail1" style="color:white;">Email Address</label>
-                            <input type="email" onkeyup="emailvalid()" class="form-control col-md-12" id="emailid" aria-describedby="emailHelp" placeholder="Email" style="background-color:rgb(100,100,100,0.5)">
+                            <input type="email" value="" onkeyup="emailvalid()" class="form-control col-md-12" id="emailid" aria-describedby="emailHelp" placeholder="Email" style="background-color:rgb(100,100,100,0.5)">
                             <label id="email_error"></label>
                     </div>
                     <div class="form-group">
                         <label for="InputPassword1" style="color:white;">Password</label>
-                        <input type="password" onkeyup="passvalid()" class="form-control col-md-12" id="password" placeholder="Password" style="background-color:rgb(100,100,100,0.5);">
+                        <input type="password" value="" onkeyup="passvalid()" class="form-control col-md-12" id="password" placeholder="Password" style="background-color:rgb(100,100,100,0.5);">
                         <label id="password_error"></label>
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="Check1">
                         <label class="form-check-label" for="exampleCheck1" style="color: white;">Remember Me</label>
                     </div>
-                    <button type="submit" onclick="validation()" class="btn btn-primary col-md-12" style="background-color: rgb(100,100,100,0.5); border: 3px solid dodgerblue;">Login</button>
+                    <button type="submit" onclick="return validation()" class="btn btn-primary col-md-12" style="background-color: rgb(100,100,100,0.5); border: 3px solid dodgerblue;">Login</button>
                 </form>
             </div>
         </div>
     </div>
-    <script>
-        function validation(){
-            email = document.getElementById('emailid')
-            pass = document.getElementById('password')
-   
-            if(email.value == ""){
-                document.getElementById('emailid').style.borderColor="red"
-                document.getElementById('email_error').innerHTML="** Please Enter Your Email Id **"
-                document.getElementById('email_error').style.color="red"
-                document.getElementById('email_error').style.display="block"
-            }
-   
-            else{
-                document.getElementById('emailid').style.borderColor="black"
-                document.getElementById('email_error').style.display="none"
-            }
-   
-            if(pass.value == ""){
-                document.getElementById('password').style.borderColor="red"
-                document.getElementById('password_error').innerHTML="** Please Enter Your Password **"
-                document.getElementById('password_error').style.color="red"
-                document.getElementById('password_error').style.display="block"
-            }
-   
-            else{
-                document.getElementById('password').style.borderColor="black"
-                document.getElementById('password_error').style.display="none"
-            }
-        }
 
-        function emailvalid(){
-            email = document.getElementById('emailid').value
-  
-            if(email.length<5){
-                document.getElementById('email_error').innerHTML="*** Please Enter A Valid Email Id ***"
-                document.getElementById('email_error').style.color="red"
-                document.getElementById('email_error').style.display="block"
-            }
-  
-            else if(email.length>=7){
-                document.getElementById('email_error').innerHTML="*** You Entered Perfect Email Id ***"
-                document.getElementById('email_error').style.color="green"
-                document.getElementById('email_error').style.display="block"
-            }
-            if(email.value == Number){
-                document.getElementById('email_error').innerHTML="*** Please Enter A Valid Email Id ***"
-                document.getElementById('email_error').style.color="red"
-                document.getElementById('email_error').style.display="block"
-            }
-  
-            if(email.length == 8){
-                document.getElementById('email_error').innerHTML="*** Email Id Must End With @gmail.com ***"
-                document.getElementById('email_error').style.color="red"
-                document.getElementById('email_error').style.display="block"
-            }
-        }
-  
-        function passvalid(){
-            pass = document.getElementById('password').value
-  
-            if(pass.length<5){
-                document.getElementById('password_error').innerHTML="*** Password Must Have 8 Digits ***"
-                document.getElementById('password_error').style.color="red"
-                document.getElementById('password_error').style.display="block"
-            }
-  
-            else if(pass.length>=8){
-                document.getElementById('password_error').innerHTML="*** You Entered Perfect Password ***"
-                document.getElementById('password_error').style.color="green"
-                document.getElementById('password_error').style.display="block"
-            }
-        }
-
-    </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>

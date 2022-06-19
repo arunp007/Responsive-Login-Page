@@ -1,0 +1,33 @@
+ /* background image property */
+ body{
+    background-image: url("https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* form transparent layer property */
+form{
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 100px;
+    border: 2px solid white;
+    border-radius: 4px;
+    width: 70%;
+    padding: 50px 50px 50px 50px;
+
+}
+
+/* head property */
+h1{
+    color: white;
+    font-size: 70px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+/* button property */
+
+.btn-primary{
+    border: 2px solid white !important;
+}
